@@ -19,7 +19,7 @@ public class EmpSkill extends AuditModel{
             sequenceName = "skill_sequence",
             initialValue = 1
     )
-    private Long id;
+    private Integer id;
 
     @NotBlank
     @Size(max=50)
@@ -34,7 +34,7 @@ public class EmpSkill extends AuditModel{
 
 
     //getters and setters
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -46,7 +46,7 @@ public class EmpSkill extends AuditModel{
         this.skillName = skillName;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 }

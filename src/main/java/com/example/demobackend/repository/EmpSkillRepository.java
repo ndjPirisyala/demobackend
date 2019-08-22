@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 public interface EmpSkillRepository extends JpaRepository<EmpSkill, Long>{
-    List<EmpSkill> findByEmployeeId(Long employeeId);
+    List<EmpSkill> findByEmployeeId(Integer employeeId);
 }

@@ -1,8 +1,10 @@
 package com.example.demobackend.model;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "employee")
@@ -16,39 +18,49 @@ public class Employee extends AuditModel{
             initialValue = 1
     )
 
-    private Long id;
+    private Integer empId;
 
     @NotBlank
     @Size(max = 60)
-    private String name;
+    private String empName;
 
     @NotBlank
     @Size(max=100)
-    private String email;
+    private String empEmail;
+
+    private ArrayList<String> skills;
 
 
     // Getters and Setters
-    public Long getId() {
-        return id;
+    public Integer getId() {
+        return empId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Integer id) {
+        this.empId = id;
     }
 
     public String getName() {
-        return name;
+        return empName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.empName = name;
     }
 
     public String getEmail() {
-        return email;
+        return empEmail;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.empEmail = email;
+    }
+
+    public ArrayList<String> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(ArrayList<String> skills) {
+        this.skills = skills;
     }
 }
