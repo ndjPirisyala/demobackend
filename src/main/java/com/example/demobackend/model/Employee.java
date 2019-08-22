@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @Table(name = "employee")
 public class Employee extends AuditModel{
     @Id
-    @GeneratedValue(generator = "employee_generator")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_generator")
 
     @SequenceGenerator(
             name = "employee_generator",
@@ -18,49 +18,49 @@ public class Employee extends AuditModel{
             initialValue = 1
     )
 
-    private Integer empId;
+    private Integer employeeId;
 
     @NotBlank
     @Size(max = 60)
-    private String empName;
+    private String employeeName;
 
     @NotBlank
     @Size(max=100)
-    private String empEmail;
+    private String employeeEmail;
 
-    private ArrayList<String> skills;
+    private ArrayList<String> employeeSkills;
 
 
     // Getters and Setters
     public Integer getId() {
-        return empId;
+        return employeeId;
     }
 
     public void setId(Integer id) {
-        this.empId = id;
+        this.employeeId = id;
     }
 
     public String getName() {
-        return empName;
+        return employeeName;
     }
 
     public void setName(String name) {
-        this.empName = name;
+        this.employeeName = name;
     }
 
     public String getEmail() {
-        return empEmail;
+        return employeeEmail;
     }
 
     public void setEmail(String email) {
-        this.empEmail = email;
+        this.employeeEmail = email;
     }
 
     public ArrayList<String> getSkills() {
-        return skills;
+        return employeeSkills;
     }
 
     public void setSkills(ArrayList<String> skills) {
-        this.skills = skills;
+        this.employeeSkills = skills;
     }
 }

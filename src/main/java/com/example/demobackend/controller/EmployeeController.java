@@ -2,7 +2,6 @@ package com.example.demobackend.controller;
 
 import com.example.demobackend.exception.ResourceNotFoundException;
 import com.example.demobackend.model.Employee;
-import com.example.demobackend.repository.EmployeeRepository;
 import com.example.demobackend.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
