@@ -7,22 +7,36 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmployeeService {
+
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    public Employee getEmployee(Integer id){
-        return employeeRepository.getOne(id);
+
+    public Employee getEmployee(int id){
+        return employeeRepository.findById(id).get();
     }
 
-    public void addEmployee(Employee emp){
-        employeeRepository.save(emp);
+    public void addEmployee(String employeeName,String employeeDob, String employeeEmail) throws RuntimeException{
+        Employee employee = new Employee();
+        employee.setName(employeeName);
+        employee.setDob(employeeDob);
+        employee.setEmail(employeeEmail);
+        employeeRepository.save(employee);
     }
 
-    public void updateEmployee(Employee emp){
-        employeeRepository.save(emp);
+    public void updateEmployee(int employeeId, String employeeName,String employeeDob,String employeeEmail) throws RuntimeException{
+        Employee employee = employeeRepository.findById(employeeId).get();
+        employee.setName(employeeName);
+        employee.setDob(employeeDob);
+        employee.setEmail(employeeEmail);
+        employeeRepository.save(employee);
     }
 
-    public void deleteEmployee(Integer id){
-        employeeRepository.deleteById(id);
+    public void deleteEmployee(Integer employeeId) throws RuntimeException{
+        employeeRepository.deleteById(employeeId);
+    }
+
+    public String getNextId(){
+        return employeeRepository.getNextSeriesId().toString();
     }
 }

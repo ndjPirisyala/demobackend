@@ -5,6 +5,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.Date;
 
 @Entity
 @Table(name = "employee")
@@ -15,7 +16,8 @@ public class Employee extends AuditModel{
     @SequenceGenerator(
             name = "employee_generator",
             sequenceName = "employee_sequence",
-            initialValue = 1
+            initialValue = 1,
+            allocationSize=1
     )
 
     private Integer employeeId;
@@ -25,10 +27,13 @@ public class Employee extends AuditModel{
     private String employeeName;
 
     @NotBlank
+    private String employeeDob;
+
+    @NotBlank
     @Size(max=100)
     private String employeeEmail;
 
-    private ArrayList<String> employeeSkills;
+//    private ArrayList<String> employeeSkills;
 
 
     // Getters and Setters
@@ -48,6 +53,14 @@ public class Employee extends AuditModel{
         this.employeeName = name;
     }
 
+    public String getDob() {
+        return employeeDob;
+    }
+
+    public void setDob(String employeeDob) {
+        this.employeeDob = employeeDob;
+    }
+
     public String getEmail() {
         return employeeEmail;
     }
@@ -56,11 +69,11 @@ public class Employee extends AuditModel{
         this.employeeEmail = email;
     }
 
-    public ArrayList<String> getSkills() {
-        return employeeSkills;
-    }
-
-    public void setSkills(ArrayList<String> skills) {
-        this.employeeSkills = skills;
-    }
+//    public ArrayList<String> getSkills() {
+//        return employeeSkills;
+//    }
+//
+//    public void setSkills(ArrayList<String> skills) {
+//        this.employeeSkills = skills;
+//    }
 }
