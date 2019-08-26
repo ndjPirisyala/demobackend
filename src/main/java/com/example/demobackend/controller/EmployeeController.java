@@ -1,5 +1,6 @@
 package com.example.demobackend.controller;
 
+
 import com.example.demobackend.exception.ResourceNotFoundException;
 import com.example.demobackend.model.Employee;
 import com.example.demobackend.service.EmployeeService;
@@ -8,9 +9,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.Valid;
 import java.util.List;
+
 
 @RestController
 public class EmployeeController {
@@ -55,7 +58,6 @@ public class EmployeeController {
     @CrossOrigin
     @RequestMapping("/nextID")
     public void getNextId(){
-        System.out.println("1");
         employeeService.getNextId();
     }
 
