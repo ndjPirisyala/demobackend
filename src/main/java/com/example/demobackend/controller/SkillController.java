@@ -20,6 +20,7 @@ public class SkillController {
         return skillService.getSkill(id);
     }
 
+    @CrossOrigin
     @RequestMapping("/view-all-skills")
     public List<Skill> getAllSkills(){
         return skillService.getAllSkills();
