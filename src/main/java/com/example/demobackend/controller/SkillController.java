@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class SkillController {
 
@@ -16,6 +18,11 @@ public class SkillController {
     @RequestMapping("view-skill/{id}")
     public Skill getSkill(@PathVariable Integer id){
         return skillService.getSkill(id);
+    }
+
+    @RequestMapping("/view-all-skills")
+    public List<Skill> getAllSkills(){
+        return skillService.getAllSkills();
     }
 
     @CrossOrigin

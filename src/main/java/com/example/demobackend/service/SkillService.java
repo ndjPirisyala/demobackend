@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.util.List;
 
 @Service
 public class SkillService {
@@ -15,6 +16,10 @@ public class SkillService {
 
     public Skill getSkill(int id) {
         return skillRepository.findById(id).get();
+    }
+
+    public List<Skill> getAllSkills(){
+        return skillRepository.findAll();
     }
 
     public void addSkill(String skillName) throws RuntimeException{
