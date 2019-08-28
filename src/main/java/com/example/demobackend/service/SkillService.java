@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -39,6 +41,11 @@ public class SkillService {
     }
 
     public String getNextId(){
-        return skillRepository.getNextSeriesId().toString();
+        List<Skill> list = getAllSkills();
+        List<Integer> maxList = new ArrayList<Integer>();
+        for(int i=0; i<list.size(); i++){
+            maxList.add(list.get(i).getSkillId());
+        }
+        return Integer.toString(Collections.max(maxList)+1);
     }
 }

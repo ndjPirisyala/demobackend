@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.criteria.CriteriaBuilder;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class EmployeeService {
@@ -43,8 +42,17 @@ public class EmployeeService {
         employeeRepository.deleteById(employeeId);
     }
 
+    public List<Employee> getAllEmployee(){
+        return employeeRepository.findAll();
+    }
+
     public String getNextId(){
-        return employeeRepository.getNextSeriesId().toString();
+        List<Employee> list = getAllEmployee();
+        List<Integer> maxList = new ArrayList<Integer>();
+        for(int i=0; i<list.size(); i++){
+            maxList.add(list.get(i).getId());
+        }
+        return Integer.toString(Collections.max(maxList)+50);
     }
 
     public Set<Skill> convert(String skillIds, String skillNames){
@@ -62,7 +70,7 @@ public class EmployeeService {
             s.setSkillName(sNames[i]);
             sSet.add(s);
         }
-
         return sSet;
     }
+
 }

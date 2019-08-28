@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
 
-    @Query(value = "select currval('employee_sequence')", nativeQuery = true)
-    Integer getNextSeriesId();
+//    @Query(value = "select max('employee_id') from 'employee'", nativeQuery = true)
+//    Integer getNextSeriesId();
 }

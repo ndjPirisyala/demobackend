@@ -47,8 +47,8 @@ public class SkillController {
 
     @CrossOrigin
     @RequestMapping("/nextSkillID")
-    public void getNextId(){
-        skillService.getNextId();
+    public String getNextId(){
+        return skillService.getNextId();
     }
 
 }

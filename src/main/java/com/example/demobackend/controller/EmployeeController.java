@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -64,9 +65,16 @@ public class EmployeeController {
 
     @CrossOrigin
     @RequestMapping("/nextEmpID")
-    public void getNextId(){
-        employeeService.getNextId();
+    public String getNextId(){
+        return employeeService.getNextId();
     }
+
+    @CrossOrigin
+    @RequestMapping("/getAll")
+    public List<Employee> getAll(){
+        return employeeService.getAllEmployee();
+    }
+
 
 
 }
