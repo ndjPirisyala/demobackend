@@ -3,6 +3,7 @@ package com.example.demobackend.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Set;
 
 @Entity
 @Table(name = "skill")
@@ -23,6 +24,9 @@ public class Skill extends AuditModel{
     @Size(max = 60)
     private String skillName;
 
+//    @ManyToMany
+//    Set<Employee> skilledOnes;
+
     public Integer getSkillId() {
         return skillId;
     }
@@ -38,5 +42,13 @@ public class Skill extends AuditModel{
     public void setSkillName(String skillName) {
         this.skillName = skillName;
     }
+
+//    public Set<Employee> getSkilledOnes() {
+//        return skilledOnes;
+//    }
+//
+//    public void setSkilledOnes(Set<Employee> skilledOnes) {
+//        this.skilledOnes = skilledOnes;
+//    }
 
 }

@@ -3,6 +3,7 @@ package com.example.demobackend.controller;
 
 import com.example.demobackend.exception.ResourceNotFoundException;
 import com.example.demobackend.model.Employee;
+import com.example.demobackend.model.Skill;
 import com.example.demobackend.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -13,7 +14,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.Valid;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 
 @RestController
@@ -35,8 +37,10 @@ public class EmployeeController {
     @RequestMapping(method = RequestMethod.POST, value = "/add-emp")
     public void addEmployee(@RequestParam(value="employeeName") String employeeName,
                             @RequestParam(value = "employeeDob") String employeeDob,
-                            @RequestParam(value="employeeEmail") String employeeEmail){
-        employeeService.addEmployee(employeeName,employeeDob,employeeEmail);
+                            @RequestParam(value="employeeEmail") String employeeEmail,
+                            @RequestParam(value="employeeSkillIds") String employeeSkillIds,
+                            @RequestParam(value="employeeSkillNames") String employeeSkillNames){
+        employeeService.addEmployee(employeeName,employeeDob,employeeEmail,employeeSkillIds,employeeSkillNames);
     }
 
     //PUT-update
@@ -45,8 +49,10 @@ public class EmployeeController {
     public void updateEmployee(@RequestParam(value="employeeId") int employeeId,
                                @RequestParam(value="employeeName") String employeeName,
                                @RequestParam(value = "employeeDob") String employeeDob,
-                               @RequestParam(value="employeeEmail") String employeeEmail){
-        employeeService.updateEmployee(employeeId,employeeName,employeeDob,employeeEmail);
+                               @RequestParam(value="employeeEmail") String employeeEmail,
+                               @RequestParam(value="employeeSkillIds") String employeeSkillIds,
+                               @RequestParam(value="employeeSkillNames") String employeeSkillNames){
+        employeeService.updateEmployee(employeeId,employeeName,employeeDob,employeeEmail,employeeSkillIds,employeeSkillNames);
     }
 
     //Delete

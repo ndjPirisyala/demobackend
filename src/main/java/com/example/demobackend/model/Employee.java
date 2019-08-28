@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "employee")
@@ -33,8 +34,12 @@ public class Employee extends AuditModel{
     @Size(max=100)
     private String employeeEmail;
 
-//    private ArrayList<String> employeeSkills;
-
+    @ManyToMany
+    @JoinTable(
+            name = "skills_having",
+            joinColumns = @JoinColumn(name = "employeeId"),
+            inverseJoinColumns = @JoinColumn(name = "skillId"))
+    Set<Skill> givenSkills;
 
     // Getters and Setters
     public Integer getId() {
@@ -69,11 +74,12 @@ public class Employee extends AuditModel{
         this.employeeEmail = email;
     }
 
-//    public ArrayList<String> getSkills() {
-//        return employeeSkills;
-//    }
-//
-//    public void setSkills(ArrayList<String> skills) {
-//        this.employeeSkills = skills;
-//    }
+    public Set<Skill> getGivenSkills() {
+        return givenSkills;
+    }
+
+    public void setGivenSkills(Set<Skill> givenSkills) {
+        this.givenSkills = givenSkills;
+    }
+
 }
