@@ -25,7 +25,9 @@ public class EmployeeService {
         employee.setName(employeeName);
         employee.setDob(employeeDob);
         employee.setEmail(employeeEmail);
-        employee.setGivenSkills(convert(givenSkillsIds,givenSkillNames));
+        if(!givenSkillsIds.equals("noskill")){
+            employee.setGivenSkills(convert(givenSkillsIds,givenSkillNames));
+        }
         employeeRepository.save(employee);
     }
 
@@ -34,7 +36,12 @@ public class EmployeeService {
         employee.setName(employeeName);
         employee.setDob(employeeDob);
         employee.setEmail(employeeEmail);
-        employee.setGivenSkills(convert(givenSkillsIds,givenSkillNames));
+        if(!givenSkillsIds.equals("noskill")){
+            employee.setGivenSkills(convert(givenSkillsIds,givenSkillNames));
+        }
+        else{
+            employee.setGivenSkills(null);
+        }
         employeeRepository.save(employee);
     }
 
